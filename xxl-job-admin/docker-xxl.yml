@@ -1,0 +1,19 @@
+version: "3"
+services:
+  thanks-xxl-job-admin:
+    image: yu/xxl-job-admin:2.0.1
+    environment:
+       MYSQL_HOST: 47.107.183.198
+#       MYSQL_PORT: 3306
+#       MYSQL_USER: root
+       MYSQL_PASSWORD: 940115
+       LOGIN_USERNAME: root
+       LOGIN_PASSWORD: 940115
+       WEB_PREFIX: /xxl-job-admin
+#       MAIL_HOST: ''
+#       MAIL_PORT: ''
+#       MAIL_USERNAME: ''
+#       MAIL_PASSWORD: ''
+#       ACCESS_TOKEN: ''
+    ports:
+      - "8080:8080"

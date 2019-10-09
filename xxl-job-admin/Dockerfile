@@ -1,11 +1,12 @@
-FROM openjdk:7-jre-slim
-MAINTAINER xuxueli
+FROM openjdk:8-jdk-alpine
+ENV PROJECT_HOME /opt/project
+# Add a jhipster user to run our application so that it doesn't need to run as root
+RUN adduser -D -s /bin/sh jhipster
+WORKDIR ${PROJECT_HOME}
+ADD entrypoint.sh entrypoint.sh
+RUN chmod 755 entrypoint.sh
 
-ENV PARAMS=""
-
-ENV TZ=PRC
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
-ADD target/xxl-job-admin-*.jar /app.jar
-
-ENTRYPOINT ["sh","-c","java -jar /app.jar $PARAMS"]
+ADD *.war app.war
+ENTRYPOINT ["./entrypoint.sh"]
+# ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/opt/project/app.war"]
+EXPOSE 8081 5701/udp
