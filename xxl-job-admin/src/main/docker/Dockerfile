@@ -8,5 +8,5 @@ RUN chmod 755 entrypoint.sh
 
 ADD *.jar app.jar
 ENTRYPOINT ["./entrypoint.sh"]
-# ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/opt/project/app.war"]
+# ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/opt/project/app.jar"]
 EXPOSE 8081 5701/udp
