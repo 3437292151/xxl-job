@@ -6,7 +6,7 @@ WORKDIR ${PROJECT_HOME}
 ADD entrypoint.sh entrypoint.sh
 RUN chmod 755 entrypoint.sh
 
-ADD *.war app.war
+ADD *.jar app.jar
 ENTRYPOINT ["./entrypoint.sh"]
 # ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/opt/project/app.war"]
 EXPOSE 8081 5701/udp
